@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ProjectCard from './ProjectCard';
 import ApiService from '../services/APIService';
+import Navbar from './Navbar';
 
 function ProjectList () {
     const [projects, setProjects] = useState([]);
