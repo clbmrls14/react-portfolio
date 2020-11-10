@@ -1,28 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import ProjectCard from './ProjectCard';
 import ApiService from '../services/APIService';
-import Navbar from './Navbar';
 
 function ProjectList () {
     const [projects, setProjects] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    async function getProjects() {
+        try {
+            setLoading(true);
+            const projects = await ApiService.getProjects();
+            setProjects(projects);
+        } catch (error) {
+            setError(error);
+        } finally {
+            setLoading(false);
+        }
+    }
 
     useEffect(() => {
-        setProjects([
-            {
-                title: "React Project",
-                completion_date: "2020-01-01T04:13:56"
-            },
-            {
-                title: "Project Blazor",
-                completion_date: "2020-10-12T11:46:02"
-            }
-        ]);
-    });
+        getProjects();
+    }, []);
 
+    if (error) return "Unable to Load Projects.";
     return (
         <div class="ProjectList">
             <h2>Recent Projects:</h2>
-            {projects.map(project => <ProjectCard key={project.id} {...project} />)}
+            {loading ? "Loading projects" : projects.map(project => <ProjectCard key={project.id} {...project} />)}
         </div>
     );
 }
