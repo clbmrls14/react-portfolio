@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ProjectCard from './ProjectCard';
 import ApiService from '../services/APIService';
 
-function ProjectList () {
+const ProjectList = () => {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -27,7 +27,7 @@ function ProjectList () {
     return (
         <div class="ProjectList">
             <h2>Recent Projects:</h2>
-            {loading ? "Loading projects" : projects.map(project => <ProjectCard key={project.id} {...project} />)}
+            {loading ? "Loading projects..." : projects.map(project => <ProjectCard key={project.id} {...project} />)}
         </div>
     );
 }
