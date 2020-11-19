@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ApiService from '../services/APIService';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import RelevantProjects from './RelevantProjects';
 
 const SkillList = () => {
     const [languages, setLanguages] = useState([]);
     const [platforms, setPlatforms] = useState([]);
     const [technologies, setTechnologies] = useState([]);
-    const [selectedLanguage, setSelectedLanguage] = useState(null);
-    const [selectedPlatform, setSelectedPlatform] = useState(null);
-    const [selectedTechnology, setSelectedTechnology] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -48,7 +44,7 @@ const SkillList = () => {
                 <ul>
                     {languages.map(language => 
                         <li>
-                            <a href={'/languages/' + language.slug} onClick={() => setSelectedLanguage(language)}>{language.name}</a>
+                            <Link to={"/languages/" + language.id}>{language.name}</Link>
                         </li>)
                     }
                 </ul>
@@ -58,7 +54,7 @@ const SkillList = () => {
                 <ul>
                     {platforms.map(platform => 
                         <li>
-                            <a href={'/platforms/' + platform.slug} onClick={() => setSelectedPlatform(platform)}>{platform.name}</a>
+                            <Link to={"/platforms/" + platform.id}>{platform.name}</Link>
                         </li>)
                     }                
                 </ul>
@@ -68,24 +64,11 @@ const SkillList = () => {
                 <ul>
                     {technologies.map(technology => 
                         <li>
-                            <a href={'/technologies/' + technology.slug} onClick={() => setSelectedTechnology(technology)}>{technology.name}</a>
+                            <Link to={"/technologies/" + technology.id}>{technology.name}</Link>
                         </li>)
                     }                
                 </ul>
             </div>
-            {/* <Router>
-                <Switch>
-                    <Route path="/languages/:slug" render={() => 
-                        <RelevantProjects skill={selectedLanguage} skillType="language" />
-                    }/>
-                    <Route path="/platforms/:slug" render={() => 
-                        <RelevantProjects skill={selectedPlatform} skillType="platform" />
-                    }/>
-                    <Route path="/technologies/:slug" render={() => 
-                        <RelevantProjects skill={selectedTechnology} skillType="technology" />
-                    }/>
-                </Switch>
-            </Router> */}
         </div>
         
         

@@ -28,12 +28,28 @@ const ApiService = {
         return languages;
     },
 
+    async getLanguage(id) {
+        const language = await axios.get(endpoint + 'project/getlanguagebyid?id=' + id)
+            .then(response => response.data);
+
+        console.log(language);
+        return language;
+    },
+
     async getPlatforms() {
         const platforms = await axios.get(endpoint + 'project/getplatforms')
             .then(response => response.data);
 
         console.log(platforms);
         return platforms;
+    },
+
+    async getPlatform(id) {
+        const platform = await axios.get(endpoint + 'project/getplatformbyid?id=' + id)
+            .then(response => response.data);
+
+        console.log(platform);
+        return platform;
     },
 
     async getTechnologies() {
@@ -44,18 +60,26 @@ const ApiService = {
         return technologies;
     },
 
+    async getTechnology(id) {
+        const technology = await axios.get(endpoint + 'project/gettechnologybyid?id=' + id)
+            .then(response => response.data);
+
+        console.log(technology);
+        return technology;
+    },
+
     async getProjectsBySkill(id, skillType) {
         var projects;
         if (skillType === 'language') {
-            projects = await axios.get(endpoint + 'project/getprojectbylanguage?id' + id)
+            projects = await axios.get(endpoint + 'project/getprojectbylanguage?id=' + id)
             .then(response => response.data);
         }
         if (skillType === 'platform') {
-            projects = await axios.get(endpoint + 'project/getprojectbyplatform?id' + id)
+            projects = await axios.get(endpoint + 'project/getprojectbyplatform?id=' + id)
             .then(response => response.data);
         }
         if (skillType === 'technology') {
-            projects = await axios.get(endpoint + 'project/getprojectbytechnology?id' + id)
+            projects = await axios.get(endpoint + 'project/getprojectbytechnology?id=' + id)
             .then(response => response.data);
         }
         

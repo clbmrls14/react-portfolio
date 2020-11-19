@@ -7,7 +7,9 @@ import ProjectList from "./components/ProjectList";
 import Resume from "./components/Resume";
 import SkillList from "./components/SkillList";
 import ProjectDetails from "./components/ProjectDetails";
-import RelevantProjects from './components/RelevantProjects';
+import Languages from './components/Languages';
+import Platforms from './components/Platforms';
+import Technologies from './components/Technologies';
 
 const App = () => {
 
@@ -20,7 +22,9 @@ const App = () => {
           <Route path="/resume" component={Resume} />
           <Route path="/skills" component={SkillList} />
           <Route path="/details/:slug" component={ProjectDetails} />
-          {/* <Route path="/languages/:id" component={RelevantProjects} /> */}
+          <Route path="/languages/:id" component={Languages} />
+          <Route path="/platforms/:id" component={Platforms} />
+          <Route path="/technologies/:id" component={Technologies} />
         </Switch>
       </Router>
     </div>

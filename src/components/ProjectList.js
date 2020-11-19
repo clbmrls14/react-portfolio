@@ -24,7 +24,7 @@ const ProjectList = () => {
         getProjects();
     }, []);
 
-    if (error) return "Unable to Load Projects.";
+    if (error) return "Unable to Load Projects";
     return (
         <div className="ProjectList">
             <h2>Recent Projects:</h2>

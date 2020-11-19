@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function ProjectCard (props) {
+const ProjectCard = (props) => {
     return (
         <div className="ProjectCard">
             <Link to={"/details/" + props.slug}><h4>{props.title}</h4></Link>
