@@ -6,6 +6,8 @@ import Header from './components/Header';
 import ProjectList from "./components/ProjectList";
 import Resume from "./components/Resume";
 import SkillList from "./components/SkillList";
+import ProjectDetails from "./components/ProjectDetails";
+import RelevantProjects from './components/RelevantProjects';
 
 const App = () => {
 
@@ -17,6 +19,8 @@ const App = () => {
           <Route exact path="/" component={ProjectList} />
           <Route path="/resume" component={Resume} />
           <Route path="/skills" component={SkillList} />
+          <Route path="/details/:slug" component={ProjectDetails} />
+          {/* <Route path="/languages/:id" component={RelevantProjects} /> */}
         </Switch>
       </Router>
     </div>

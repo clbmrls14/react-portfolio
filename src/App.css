@@ -57,3 +57,7 @@
   .ProjectCard:hover {
     border-color: #E63946;
   }
+
+.SkillList {
+  margin: 2em;
+}

@@ -12,6 +12,14 @@ const ApiService = {
         return projects;
     },
 
+    async getProject(slug) {
+        const project = await axios.get(endpoint + 'project/' + slug)
+            .then(response => response.data);
+
+        console.log(project);
+        return project;
+    },
+
     async getLanguages() {
         const languages = await axios.get(endpoint + 'project/getlanguages')
             .then(response => response.data);
@@ -35,6 +43,25 @@ const ApiService = {
         console.log(technologies);
         return technologies;
     },
+
+    async getProjectsBySkill(id, skillType) {
+        var projects;
+        if (skillType === 'language') {
+            projects = await axios.get(endpoint + 'project/getprojectbylanguage?id' + id)
+            .then(response => response.data);
+        }
+        if (skillType === 'platform') {
+            projects = await axios.get(endpoint + 'project/getprojectbyplatform?id' + id)
+            .then(response => response.data);
+        }
+        if (skillType === 'technology') {
+            projects = await axios.get(endpoint + 'project/getprojectbytechnology?id' + id)
+            .then(response => response.data);
+        }
+        
+        console.log(projects);
+        return projects;
+    }
 }
 
 export default ApiService;
