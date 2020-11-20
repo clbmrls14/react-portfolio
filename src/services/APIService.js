@@ -109,7 +109,9 @@ const ApiService = {
         
         console.log(projects);
         return projects;
-    }
+    },
+
+    // async addNewProject()
 }
 
 export default ApiService;

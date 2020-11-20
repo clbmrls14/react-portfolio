@@ -77,6 +77,7 @@ const ProjectDetails = () => {
                     }                
                 </ul>
             </div>
+            <Link to={"/edit/" + project.slug}>Edit</Link>
         </div>
     );   
 }
