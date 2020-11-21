@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Document, Page } from 'react-pdf';
 // import Iframe from 'react-iframe';
 
-function Resume() {
+const Resume = () => {
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
 
@@ -13,9 +13,10 @@ function Resume() {
 
     return (
         <div>
-            {/* <Iframe src="/CalebMResume.pdf" /> */}
+            
             <h2>My Resume:</h2>
-            <Document file="/CalebMResume.pdf" onLoadSuccess={onDocumentLoadSuccess}>
+            {/* <Iframe url="./CalebMResume.pdf" width="900px" height="1175px"></Iframe> */}
+            <Document file="./CalebMResume.pdf" onLoadSuccess={onDocumentLoadSuccess}>
                 <Page pageNumber={pageNumber} />
             </Document>
             <p>Page {pageNumber} of {numPages}.</p>
