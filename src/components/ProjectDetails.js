@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Markdown from 'react-remarkable';
 import ApiService from '../services/APIService';
+import Loading from './generics/Loading';
 
 const ProjectDetails = () => {
     const [project, setProject] = useState([]);
@@ -38,7 +39,7 @@ const ProjectDetails = () => {
     }, []);
 
     if (error) return "Unable to Load Project.";
-    if (loading) return "Loading Project...";
+    if (loading) return <Loading />;
     
     return (
         <div>

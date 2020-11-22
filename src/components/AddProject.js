@@ -1,12 +1,31 @@
+import { useAuth0 } from '@auth0/auth0-react';
 import React, { useState } from 'react';
+import AuthenticatedAPIService from '../services/AuthenticatedAPIService';
 
 const AddProject = () => {
     const [title, setTitle] = useState('');
     const [requirements, setRequirements] = useState('');
     const [description, setDescription] = useState('');
 
-    const addProject = () => {
-        console.log('Clicked Add Project');
+    const { getAccessTokenSilently } = useAuth0();
+
+    const addProject = async () => {
+        try {
+            const token = getAccessTokenSilently();
+            const newProject = {
+                Title: title,
+                Requirements: requirements,
+                Description: description,
+                CompletionDate: Date.now()
+            };
+            await AuthenticatedAPIService.addProject(token, newProject);
+            setTitle('');
+            setRequirements('');
+            setDescription('');
+        } catch (error) {
+            console.log(error);
+        }
+        
     }
 
     return(

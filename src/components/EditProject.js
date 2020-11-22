@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ApiService from '../services/APIService';
+import Loading from './generics/Loading';
 
 const EditProject = () => {
     const [title, setTitle] = useState('');
@@ -35,7 +36,7 @@ const EditProject = () => {
     }, []);
 
     if (error) return "Unable to Load Project.";
-    if (loading) return "Loading Project...";
+    if (loading) return <Loading />;
 
     return(
         <div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import RelevantProjects from './RelevantProjects';
 import ApiService from '../services/APIService';
+import Loading from './generics/Loading';
 
 const Languages = () => {
     const [projects, setProjects] = useState([]);
@@ -40,7 +41,7 @@ const Languages = () => {
     }, []);
 
     if (error) return "Unable to Load Projects";
-    if (loading) return "Loading Projects...";
+    if (loading) return <Loading />;
 
     return (
         <div>

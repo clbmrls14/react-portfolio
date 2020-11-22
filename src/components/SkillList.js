@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ApiService from '../services/APIService';
+import Loading from './generics/Loading';
 
 const SkillList = () => {
     const [languages, setLanguages] = useState([]);
@@ -30,12 +31,8 @@ const SkillList = () => {
     }, []);
 
     if (error) return "Unable to Load Skills.";
-    if (loading) {
-        <div  className="SkillList">
-            <h2>My Skills:</h2>
-            <h4>Loading Skills...</h4>
-        </div>
-    }
+    if (loading) return <Loading />;
+    
     return(
         <div className="SkillList">
             <h2>My Skills:</h2>
