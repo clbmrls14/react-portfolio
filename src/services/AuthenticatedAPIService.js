@@ -10,7 +10,7 @@ const AuthenticatedAPIService = {
     async addProject(token, newProject) {
         await axios.post(endpoint + "project", newProject, {
             headers: {
-                Authorization: `Bearer ${token}`,
+                authorization: `Bearer ${token}`,
             },
         });
     },

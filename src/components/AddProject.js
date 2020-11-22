@@ -11,7 +11,7 @@ const AddProject = () => {
 
     const addProject = async () => {
         try {
-            const token = getAccessTokenSilently();
+            const token = await getAccessTokenSilently();
             const newProject = {
                 Title: title,
                 Requirements: requirements,
